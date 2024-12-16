@@ -151,14 +151,81 @@
                             <small>Public <i class="fa-solid fa-caret-down"></i></small>
                         </div>
                     </div>
-                    <div class="post-input-container">
-                        <textarea rows="3" placeholder="What's on your mind" id=""></textarea>
-                        <div class="add-post-links">
-                            <a href="#"><img src="images/live-video.png" alt="">Live Video</a>
-                            <a href="#"><img src="images/photo.png" alt="">Photo/Video</a>
-                            <a href="#"><img src="images/feeling.png" alt="">Feeling/Activity</a>
+                    <div class="post-input-container" style="padding: 20px; background-color: #f7f7f7; border-radius: 8px; margin-bottom: 20px;">
+                        <textarea rows="3" placeholder="What's on your mind?" id="post-text" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;"></textarea>
+                        
+                        <div class="add-post-links" style="margin-top: 10px;">
+                            <a href="#" id="live-video-link" style="text-decoration: none; color: #4CAF50; margin-right: 15px;">
+                                <img src="images/live-video.png" alt="" style="vertical-align: middle; margin-right: 5px;">Live Video
+                            </a>
+                            <div class="file-inputs" style="display: inline-block;">
+                                <label for="image-upload" style="cursor: pointer; color: #4CAF50;">
+                                    <img src="images/photo.png" alt="" style="vertical-align: middle; width: 20px; margin-right: 5px;">Photo/Video
+                                </label>
+                                <input type="file" id="image-upload" accept="image/*,video/*" style="display: none;">
+                            </div>
+                            <div class="emoji-container" style="display: inline-block; margin-left: 15px;">
+                                <span class="emoji-button" onclick="toggleEmojiPopup()" style="font-size: 24px; cursor: pointer;">😊</span>
+                                <div class="emoji-popup" id="emoji-popup" style="display: none; position: absolute; background-color: white; border: 1px solid #ccc; border-radius: 5px; padding: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                                    <span onclick="addEmoji('😊')" style="cursor: pointer; margin-right: 5px;">😊</span>
+                                    <span onclick="addEmoji('😎')" style="cursor: pointer; margin-right: 5px;">😎</span>
+                                    <span onclick="addEmoji('😂')" style="cursor: pointer; margin-right: 5px;">😂</span>
+                                    <span onclick="addEmoji('❤️')" style="cursor: pointer;">❤️</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="submitPost()" style="margin-top: 15px; padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">Post</button>
+                    </div>
+                    
+                    <div class="post-popup" id="post-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); z-index: 1000;">
+                        <div class="popup-content">
+                            <h3 style="margin: 0 0 10px 0;">Your Post</h3>
+                            <p id="post-description" style="margin: 0 0 10px 0;"></p>
+                            <img id="post-image" alt="" style="max-width: 100%; display: block; margin-bottom: 10px;">
+                            <button onclick="closePostPopup()" style="padding: 5px 10px; background-color: #f44336; color: white; border: none; border-radius: 5px; cursor: pointer;">Close</button>
                         </div>
                     </div>
+                    
+                    <script>
+                        function toggleEmojiPopup() {
+                            const emojiPopup = document.getElementById('emoji-popup');
+                            emojiPopup.style.display = emojiPopup.style.display === 'block' ? 'none' : 'block';
+                        }
+                    
+                        function addEmoji(emoji) {
+                            const textArea = document.getElementById('post-text');
+                            textArea.value += emoji;
+                            toggleEmojiPopup();
+                        }
+                    
+                        function submitPost() {
+                            const postText = document.getElementById('post-text').value;
+                            const fileInput = document.getElementById('image-upload');
+                            const file = fileInput.files[0];
+                            const postDescription = document.getElementById('post-description');
+                            const postImage = document.getElementById('post-image');
+                    
+                            postDescription.textContent = postText;
+                            
+                            if (file) {
+                                const reader = new FileReader();
+                                reader.onload = function (e) {
+                                    postImage.src = e.target.result;
+                                    postImage.style.display = 'block';
+                                };
+                                reader.readAsDataURL(file);
+                            } else {
+                                postImage.style.display = 'none';
+                            }
+                    
+                            document.getElementById('post-popup').style.display = 'flex';
+                        }
+                    
+                        function closePostPopup() {
+                            document.getElementById('post-popup').style.display = 'none';
+                        }
+                    </script>
+                    
                     <div class="post-container">
                         <div class="row-post">
                             <div class="user-profile">

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings & Privacy</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and font styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: #1876f2;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav img {
+            width: 160px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #333;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Main container */
+        .container {
+            padding: 30px 5%;
+            max-width: 1200px;
+            margin: auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #1876f2;
+            margin-bottom: 15px;
+        }
+
+        /* Form input styling */
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        input[type="checkbox"] {
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 12px 20px;
+            background-color: #1876f2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #155db1;
+        }
+
+        .delete-btn {
+            background-color: red;
+            margin-top: 20px;
+        }
+
+        .delete-btn:hover {
+            background-color: darkred;
+        }
+
+        /* Popup styling */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .popup.active {
+            display: block;
+        }
+
+        .popup .message {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .popup button {
+            background-color: #1876f2;
+            border-radius: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div>
+            <img src="images/logo.png" alt="Logo">
+        </div>
+        <div>
+            <a href="index.html">Back to Profile</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Settings & Privacy</h1>
+
+        <!-- Account Settings -->
+        <div>
+            <h2>Account Settings</h2>
+            <form id="accountForm">
+                <label for="username">Change Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter new username">
+
+                <label for="email">Change Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter new email">
+
+                <label for="password">Change Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter new password">
+
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+
+        <!-- Privacy Settings -->
+        <div>
+            <h2>Privacy Settings</h2>
+            <form>
+                <label for="twoFactor">Enable Two-Factor Authentication:</label>
+                <input type="checkbox" id="twoFactor" name="twoFactor">
+
+                <label for="emailNotifications">Email Notifications:</label>
+                <input type="checkbox" id="emailNotifications" name="emailNotifications">
+
+                <label for="dataSharing">Share Data with Third Parties:</label>
+                <input type="checkbox" id="dataSharing" name="dataSharing">
+
+                <button type="submit">Save Privacy Settings</button>
+            </form>
+        </div>
+
+        <!-- Delete Account -->
+        <div>
+            <h2>Delete Account</h2>
+            <p>If you wish to permanently delete your account, please click the button below. This action cannot be undone.</p>
+            <button class="delete-btn">Delete Account</button>
+        </div>
+    </div>
+
+    <!-- Password Change Success Popup -->
+    <div id="popup" class="popup">
+        <div class="message">Password changed successfully!</div>
+        <button onclick="closePopup()">Okay</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Your Website | All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Simulate a successful password change and show popup
+        document.getElementById("accountForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+            showPopup(); // Show popup after password change
+        });
+
+        // Show the popup
+        function showPopup() {
+            document.getElementById("popup").classList.add("active");
+        }
+
+        // Close the popup
+        function closePopup() {
+            document.getElementById("popup").classList.remove("active");
+        }
+    </script>
+
+</body>
+</html>
