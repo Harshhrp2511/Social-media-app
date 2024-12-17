@@ -7,7 +7,7 @@
 
 :root{
     --body-color: #efefef;
-    --nav-color: #1876f2;
+    --nav-color: #72bcd4;
     --bg-color: #fff;
 }
 .dark-theme{
@@ -123,7 +123,7 @@ nav{
     margin-right: 15px;
 }
 .imp-links a:last-child{
-    color: #1876f2;
+    color: #72bcd4;
 }
 .imp-links{
     border-bottom: 1px solid #ccc;
@@ -151,7 +151,7 @@ nav{
 }
 .sidebar-title a{
     text-decoration: none;
-    color: #1876f2;
+    color: #72bcd4;
     font-size: 12px;
 }
 .event{
@@ -176,14 +176,14 @@ nav{
 .event a{
     font-size: 12px;
     text-decoration: none;
-    color: #1876f2;
+    color: #72bcd4;
 }
 .left-event span{
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #1876f2;
+    background: #72bcd4;
     color: #fff;
     font-size: 10px;
     padding: 4px 0;
@@ -282,7 +282,7 @@ nav{
 .user-profile p{
     margin-right: 5px;
     font-weight: 500;
-    color: black;
+    color: #626262;
 }
 .user-profile small{
     font-size: 12px;

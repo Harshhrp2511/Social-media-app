@@ -46,7 +46,7 @@ function changeNavbarColor() {
     const navbar = document.getElementById('navbar');
     const color = document.getElementById('navbarColor').value;
     if (color === 'blue') {
-        navbar.style.backgroundColor = '#1876f2'; // Blue
+        navbar.style.backgroundColor = '#72bcd4'; // Blue
     } else if (color === 'green') {
         navbar.style.backgroundColor = '#28a745'; // Green
     } else if (color === 'yellow') {
